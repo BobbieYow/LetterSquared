@@ -77,3 +77,23 @@ h2 {
     justify-content: space-evenly;
     
 }
+.newestimage {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+}
+
+h3 {
+        margin: 20px;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: plum;
+}
+.about_names {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
