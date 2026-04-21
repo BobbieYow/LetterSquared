@@ -124,3 +124,7 @@ footer {
 footer {
   display: block;
 }
+.space_content {
+    height: 300px;
+    width: 100%;
+}
