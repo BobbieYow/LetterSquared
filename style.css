@@ -17,12 +17,12 @@ a:link {
 
 /* visited link */
 a:visited {
-  color: green;
+  color: rgb(0, 0, 0);
 }
 
 /* mouse over link */
 a:hover {
-  color: hotpink;
+  color: rgb(160, 6, 83);
 }
 
 /* selected link */
@@ -111,6 +111,16 @@ h3 {
     justify-content: space-evenly;
     display: flex;
     align-items: flex-start;
-    
+    border-radius: 20px;
+}
 
+
+footer {
+  text-align: left;
+  padding: 3px;
+  background-color: rgb(51, 0, 255);
+  color: white;
+}
+footer {
+  display: block;
 }
