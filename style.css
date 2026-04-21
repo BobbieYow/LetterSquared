@@ -8,6 +8,7 @@
   font-weight: bold;
   align-items: center;
   justify-content: space-evenly;
+  text-transform: capitalize;
   /*display: flex; */
 }
 /* unvisited link */
