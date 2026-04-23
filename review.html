@@ -14,43 +14,38 @@
     <a href="review.html">reviews</a>
   </nav>
   <body>
-    <div class="heroimage">
-      <img
-        src="example_heroimage_replace.jpeg"
-        alt="this needs to be personalized and replaced"
-      />
-    </div>
+    <div class="heroimage"></div>
     <div class="review_1_quote">
-      <h1>movie name</h1>
-      <p>
-        movie review Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Alias nihil explicabo deserunt suscipit dolorum exercitationem hic atque
-        quasi deleniti porro corrupti dolores, nulla aut commodi. Itaque sunt
-        repellat vero impedit?
-      </p>
-      <h3>person who reviewed</h3>
+      <h1 id="movieTitle">movie name</h1>
+      <p id="movieReview">movie review</p>
+      <h3 id="movieReviewer">person who reviewed</h3>
     </div>
-    <div class="review_1_quote">
-      <h1>movie name</h1>
-      <p>
-        movie review Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Alias nihil explicabo deserunt suscipit dolorum exercitationem hic atque
-        quasi deleniti porro corrupti dolores, nulla aut commodi. Itaque sunt
-        repellat vero impedit?
-      </p>
-      <h3>person who reviewed</h3>
-    </div>
-    <div class="review_1_quote">
-      <h1>movie name</h1>
-      <p>
-        movie review Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Alias nihil explicabo deserunt suscipit dolorum exercitationem hic atque
-        quasi deleniti porro corrupti dolores, nulla aut commodi. Itaque sunt
-        repellat vero impedit?
-      </p>
-      <h3>person who reviewed</h3>
-    </div>
-    <div class="space_content"></div>
+    <script>
+      function displayReview() {
+        const selectedMovie = localStorage.getItem("selectedMovie");
+
+        if (selectedMovie) {
+          const review = reviewers.find(
+            (r) => r.movie.toLowerCase() === selectedMovie.toLowerCase()
+          );
+
+          if (review) {
+            document.getElementById("movieTitle").textContent = review.movie;
+            document.getElementById("movieReview").textContent = review.review;
+            document.getElementById("movieReviewer").textContent =
+              "- " + review.reviewer;
+          } else {
+            document.getElementById("movieTitle").textContent = selectedMovie;
+            document.getElementById("movieReview").textContent =
+              "No review available for this movie yet.";
+            document.getElementById("movieReviewer").textContent = "";
+          }
+        }
+      }
+
+      // Load review when page loads
+      displayReview();
+    </script>
   </body>
   <footer>
     <p>Author: lettersquared team</p>
