@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Releases</title>
+    <title>Movie Search</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
-
 <nav class="menu">
   <a href="home.html">Home</a>
   <a href="index.html">index</a>
@@ -17,63 +16,70 @@
       <a href="review.html">reviews</a>
     
   </nav>
- <body>
-// i added this so we fill the api portion of the credits, its just a search with the public api for movies ;P -B.Y.
-<h1>Search New Movies</h1>
-
+<body>
+  //added this for the api stuff 
+  <h1>Search Movies</h1>
 <input type="text" id="searchInput" placeholder="Enter movie name">
 <button onclick="searchMovies()">Search</button>
 
+
 <div id="movies"></div>
+
 
 <script>
 const API_KEY = "6db4eed7";
 
+
 function searchMovies() {
-  const query = document.getElementById("searchInput").value;
+ const query = document.getElementById("searchInput").value;
 
-  fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`)
-    .then(res => res.json())
-    .then(data => {
-      const moviesDiv = document.getElementById("movies");
-      moviesDiv.innerHTML = "";
 
-      if (data.Search) {
-        data.Search.forEach(movie => {
-          const div = document.createElement("div");
+ fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`)
+   .then(res => res.json())
+   .then(data => {
+     const moviesDiv = document.getElementById("movies");
+     moviesDiv.innerHTML = "";
 
-          div.innerHTML = `
-            <h3>${movie.Title} (${movie.Year})</h3>
-            <img src="${movie.Poster}" width="100">
-            <br>
-            <button onclick="selectMovie('${movie.Title}')">
-              Check Reviews
-            </button>
-          `;
 
-          moviesDiv.appendChild(div);
-        });
-      } else {
-        moviesDiv.innerHTML = "<p>No movies found.</p>";
-      }
-    });
+     if (data.Search) {
+       data.Search.forEach(movie => {
+         const div = document.createElement("div");
+
+
+         div.innerHTML = `
+           <h3>${movie.Title} (${movie.Year})</h3>
+           <img src="${movie.Poster}" width="100">
+           <br>
+           <button onclick="selectMovie('${movie.Title}')">
+             Check Reviews
+           </button>
+         `;
+
+
+         moviesDiv.appendChild(div);
+       });
+     } else {
+       moviesDiv.innerHTML = "<p>No movies found.</p>";
+     }
+   });
 }
+
 
 function selectMovie(title) {
-  const found = reviewers.find(
-    r => r.movie.toLowerCase() === title.toLowerCase()
-  );
+ const found = reviewers.find(
+   r => r.movie.toLowerCase() === title.toLowerCase()
+ );
 
-  if (found) {
-    // Go to reviews page if review exists
-    localStorage.setItem("selectedMovie", title);
-    window.location.href = "review.html";
-  } else {
-    // Show popup if no review
-    alert("No review available for this movie yet.");
-  }
+
+ if (found) {
+   // Go to reviews page if review exists
+   localStorage.setItem("selectedMovie", title);
+   window.location.href = "review.html";
+ } else {
+   // Show popup if no review
+   alert("No review available for this movie yet.");
+ }
 }
 </script>
-
 </body>
 </html>
