@@ -3,8 +3,8 @@
 
 
   a {
-  color: rgb(30, 0, 255);
-  background-color: yellow;
+  color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
   font-weight: bold;
   align-items: center;
   justify-content: space-evenly;
@@ -23,7 +23,7 @@ a:visited {
 
 /* mouse over link */
 a:hover {
-  color: rgb(160, 6, 83);
+  color: rgb(255, 247, 0);
 }
 
 /* selected link */
@@ -38,7 +38,7 @@ body {
     color: rgb(255, 255, 255);
   }
   p {
-    color: rgb(171, 255, 216);
+    color: rgb(255, 255, 255);
     font-family: monospace;
     display: flex;
     align-items: center;
@@ -52,8 +52,11 @@ nav {
     align-items: center;
     justify-content: space-evenly;
     
-    background-color: aliceblue;
+    background-color: rgb(0, 0, 0);
     height: 100px;
+    font-size: 40px;
+    font-family: monospace;
+    color: azure;
 }
 
 h1 {
@@ -92,7 +95,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    
+
 }
 
 h3 {
@@ -101,12 +104,15 @@ h3 {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    color: plum;
+    color: rgb(0, 0, 0);
 }
 .about_names {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    background-color: rgb(255, 255, 255);
+    margin: 20px;
+
 }
 
 .review_1_quote {
@@ -125,8 +131,12 @@ h3 {
 footer {
   text-align: left;
   padding: 3px;
-  background-color: rgb(51, 0, 255);
-  color: white;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  
+  border-color: rgb(255, 0, 255);
+  border-radius: 5px;
+  border-width: 5px;
 }
 footer {
   display: block;

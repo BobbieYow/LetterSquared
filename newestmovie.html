@@ -1,28 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<nav class="menu">
-  <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-      <a href="newestmovie.html">newest movie</a>
-      <a href="review.html">reviews</a>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Search</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <nav class="menu">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="newestmovie.html">newest movie</a>
+    <a href="review.html">reviews</a>
   </nav>
-<body>
-  <div class="newestimage"><img src="projectHailMaryPoster.jpeg" alt="project hail mary poster"></div>
-    <h1>Project Hail Mary </h1>
-    <p>Science teacher Ryland Grace (Ryan Gosling) wakes up on a spaceship light years from home with no recollection of who he is or how he got there. As his memory returns, he begins to uncover his mission: solve the riddle of the mysterious substance causing the sun to die out. He must call on his scientific knowledge and unorthodox ideas to save everything on Earth from extinction... but an unexpected friendship means he may not have to do it alone. </p>
-    <h3>this was definitly one of the most exciting movies of the year for me and it did not dissapoint! - katelynn </h3>
-    <div class="space_content"></div>
+  <body>
+    //added this for the api stuff
+    <h1>Search Movies</h1>
+    <input type="text" id="searchInput" placeholder="Enter movie name" />
+    <button onclick="searchMovies()">Search</button>
 
-</body>
-<footer>
-  <p>Author: lettersquared team</p>
-</footer>
+    <div id="movies"></div>
+
+    <script>
+      const API_KEY = "6db4eed7";
+
+      function searchMovies() {
+        const query = document.getElementById("searchInput").value;
+
+        fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`)
+          .then((res) => res.json())
+          .then((data) => {
+            const moviesDiv = document.getElementById("movies");
+            moviesDiv.innerHTML = "";
+
+            if (data.Search) {
+              data.Search.forEach((movie) => {
+                const div = document.createElement("div");
+
+                div.innerHTML = `
+           <h3>${movie.Title} (${movie.Year})</h3>
+           <img src="${movie.Poster}" width="100">
+           <br>
+           <button onclick="selectMovie('${movie.Title}')">
+             Check Reviews
+           </button>
+         `;
+
+                moviesDiv.appendChild(div);
+              });
+            } else {
+              moviesDiv.innerHTML = "<p>No movies found.</p>";
+            }
+          });
+      }
+
+      function selectMovie(title) {
+        const found = reviewers.find(
+          (r) => r.movie.toLowerCase() === title.toLowerCase()
+        );
+
+        if (found) {
+          // Go to reviews page if review exists
+          localStorage.setItem("selectedMovie", title);
+          window.location.href = "review.html";
+        } else {
+          // Show popup if no review
+          alert("No review available for this movie yet.");
+        }
+      }
+    </script>
+  </body>
 </html>
