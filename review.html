@@ -15,15 +15,30 @@
     <a href="review.html">reviews</a>
   </nav>
   <body>
-    <div class="heroimage"></div>
-    <div class="review_1_quote">
-      <h1 id="movieTitle">movie name</h1>
-      <p id="movieReview">movie review</p>
-      <h3 id="movieReviewer">person who reviewed</h3>
+    <div class="heroimage review-page">
+      <div class="review_1_quote">
+        <div class="poster-box">
+          <img id="moviePoster" src="" alt="Movie Poster" style="max-width: 100%; height: auto;">
+        </div>
+        <div class="text-review-box">
+          <h1 id="movieTitle">movie name</h1>
+          <p id="movieReview">movie review</p>
+          <h3 id="movieReviewer">person who reviewed</h3>
+        </div>
+      </div>
     </div>
+
+    <div class="comment-section">
+      <h3>Leave a Comment</h3>
+      <textarea id="commentText" placeholder="Share your thoughts on this review..."></textarea>
+      <button onclick="submitComment()">Submit Comment</button>
+      <div id="commentsList"></div>
+    </div>
+
     <script>
       function displayReview() {
         const selectedMovie = localStorage.getItem("selectedMovie");
+        const selectedPoster = localStorage.getItem("selectedPoster");
 
         if (selectedMovie) {
           const review = reviewers.find(
@@ -35,20 +50,54 @@
             document.getElementById("movieReview").textContent = review.review;
             document.getElementById("movieReviewer").textContent =
               "- " + review.reviewer;
+            if (selectedPoster) {
+              document.getElementById("moviePoster").src = selectedPoster;
+            }
           } else {
             document.getElementById("movieTitle").textContent = selectedMovie;
             document.getElementById("movieReview").textContent =
               "No review available for this movie yet.";
             document.getElementById("movieReviewer").textContent = "";
+            document.getElementById("moviePoster").src = "";
           }
         }
       }
 
       // Load review when page loads
       displayReview();
+      // this is for the comments section/ the firebase requirement for the assignment :) -B.Y.
+      loadComments();
+
+      function submitComment() {
+        const commentText = document.getElementById("commentText").value;
+        const movie = localStorage.getItem("selectedMovie");
+        if (commentText && movie) {
+          const comments = JSON.parse(localStorage.getItem(`comments_${movie}`) || '[]');
+          comments.push({ text: commentText, date: new Date().toLocaleString() });
+          localStorage.setItem(`comments_${movie}`, JSON.stringify(comments));
+          document.getElementById("commentText").value = "";
+          loadComments();
+        }
+      }
+
+      function loadComments() {
+        const movie = localStorage.getItem("selectedMovie");
+        const comments = JSON.parse(localStorage.getItem(`comments_${movie}`) || '[]');
+        const commentsList = document.getElementById("commentsList");
+        commentsList.innerHTML = comments.map((c, index) => `<div class="comment">${c.text}<br><small>${c.date}</small><button onclick="deleteComment(${index})" class="delete-btn">Delete</button></div>`).join("");
+      }
+
+      function deleteComment(index) {
+        const movie = localStorage.getItem("selectedMovie");
+        let comments = JSON.parse(localStorage.getItem(`comments_${movie}`) || '[]');
+        comments.splice(index, 1);
+        localStorage.setItem(`comments_${movie}`, JSON.stringify(comments));
+        loadComments();
+      }
     </script>
-  </body>
-  <footer>
+    <footer>
     <p>Author: lettersquared team</p>
   </footer>
+  </body>
+  
 </html>
