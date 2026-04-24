@@ -15,28 +15,53 @@
     <a href="review.html">reviews</a>
   </nav>
   <body>
-    //added this for the api stuff
-    <h1>Search Movies</h1>
-    <input type="text" id="searchInput" placeholder="Enter movie name" />
-    <button onclick="searchMovies()">Search</button>
+    
+    <div class="heroimage">
+      <h1>Search Movies</h1>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Enter movie name" />
+        <button onclick="searchMovies()">Search</button>
+      </div>
+      <p class="search-help">In case you were curious about how WE felt about YOUR favorite movies. Feel free to search for them here!</p>
+    </div>
+
+    <div id="recentSearches">
+      <h3>Recent Searches</h3>
+      <button onclick="clearSearches()" class="clear-btn">Clear All</button>
+      <ul id="searchList"></ul>
+    </div>
 
     <div id="movies"></div>
 
     <script>
       const API_KEY = "6db4eed7";
 
+      let moviesData;
+
       function searchMovies() {
-        const query = document.getElementById("searchInput").value;
+        const query = document.getElementById("searchInput").value.trim();
+        if (!query) return;
+
+        // Add to recent searches
+        let recent = JSON.parse(localStorage.getItem("recentSearches") || "[]");
+        if (!recent.includes(query)) {
+          recent.unshift(query);
+          recent = recent.slice(0, 5); // Keep last 5
+          localStorage.setItem("recentSearches", JSON.stringify(recent));
+        }
+        loadRecentSearches();
 
         fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`)
           .then((res) => res.json())
           .then((data) => {
+            moviesData = data;
             const moviesDiv = document.getElementById("movies");
             moviesDiv.innerHTML = "";
 
             if (data.Search) {
               data.Search.forEach((movie) => {
                 const div = document.createElement("div");
+                div.className = "movie-item";
 
                 div.innerHTML = `
            <h3>${movie.Title} (${movie.Year})</h3>
@@ -54,6 +79,26 @@
             }
           });
       }
+      // Recent searches functions -B.Y. 
+
+      function loadRecentSearches() {
+        const recent = JSON.parse(localStorage.getItem("recentSearches") || "[]");
+        const list = document.getElementById("searchList");
+        list.innerHTML = recent.map(q => `<li><a href="#" onclick="searchAgain('${q}')">${q}</a></li>`).join("");
+      }
+
+      function searchAgain(query) {
+        document.getElementById("searchInput").value = query;
+        searchMovies();
+      }
+
+      function clearSearches() {
+        localStorage.removeItem("recentSearches");
+        loadRecentSearches();
+      }
+
+      // Load recent on page load
+      loadRecentSearches();
 
       function selectMovie(title) {
         const found = reviewers.find(
@@ -61,14 +106,23 @@
         );
 
         if (found) {
-          // Go to reviews page if review exists
+          // Go to reviews page if review exists -B.Y.
           localStorage.setItem("selectedMovie", title);
+          // Find the movie object to get poster
+          const movie = moviesData.Search.find(m => m.Title.toLowerCase() === title.toLowerCase());
+          if (movie) {
+            localStorage.setItem("selectedPoster", movie.Poster);
+          }
           window.location.href = "review.html";
         } else {
-          // Show popup if no review
+          // Show popup if no review -B.Y. 
           alert("No review available for this movie yet.");
         }
       }
     </script>
+    <footer>
+    <p>Author: lettersquared team</p>
+  </footer>
   </body>
+ 
 </html>
