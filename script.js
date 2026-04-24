@@ -3,6 +3,16 @@ const API_URL = "https://api.tvmaze.com/"
 // PLEASE WRITE YOUR MOVIE REVIEW HERE IN THE FORMAT BELOW THANK YEW -B.Y.
 const reviewers = [
   {
+    movie: "The Princess Bride",
+    review: "Sword fights, true love, revenge, and rodents of unusual size all coexist in a story that somehow feels both like a parody and the real thing at once. Its my favorite movie of all time and I own it on VHS.",
+    reviewer: "Bobbie Y."
+  },
+  {
+    movie: "Movie Name",
+    review: "MOVIE REVIEW GOES HERE. This is a placeholder review. Please replace it with your actual review of the movie.",
+    reviewer: "Movie Reviewer"
+  },
+  {
     movie: "Movie Name",
     review: "MOVIE REVIEW GOES HERE. This is a placeholder review. Please replace it with your actual review of the movie.",
     reviewer: "Movie Reviewer"
@@ -16,7 +26,7 @@ const reviewers = [
     movie: "Movie Name",
     review: "MOVIE REVIEW GOES HERE. This is a placeholder review. Please replace it with your actual review of the movie.",
     reviewer: "Movie Reviewer"
-  }
+  },
   // Add more reviews as needed :) -B.Y.
 ];
 
