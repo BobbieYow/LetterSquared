@@ -34,8 +34,8 @@ fetchData("https://api.tvmaze.com/shows/")
 
 async function fetchData(){
     try{
-        const showName = document.getElementById("showname").value.toLowerCase();
-        const response = await fetch(`https://api.tvmaze.com/shows/${showName}`);
+        const showName = document.getElementById("searchInput").value.toLowerCase();
+        const response = await fetch(`https://api.tvmaze.com/shows/${searchInput}`);
 
         if(!response.ok){
             throw new Error("Could not fetch resource")

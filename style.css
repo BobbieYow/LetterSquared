@@ -4,7 +4,6 @@
 
   a {
   color: rgb(255, 255, 255);
-  background-color: rgb(255, 255, 255);
   font-weight: bold;
   align-items: center;
   justify-content: space-evenly;
@@ -13,17 +12,17 @@
 }
 /* unvisited link */
 a:link {
-  color: red;
+  color: rgb(255, 255, 255);
 }
 
 /* visited link */
 a:visited {
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 
 /* mouse over link */
 a:hover {
-  color: rgb(255, 247, 0);
+  color: rgb(0, 0, 255);
 }
 
 /* selected link */
@@ -32,16 +31,17 @@ a:active {
 }
 
 body {
-    background-color: rgb(0, 0, 0);
+  background-color: rgb(15, 15, 15);
+    /*background-image: url(".vscode/images/v1043-045a.jpg");*/
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
   h1 {
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
   }
   p {
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-family: monospace;
     display: flex;
     align-items: center;
@@ -49,13 +49,11 @@ body {
     margin: 20px;
   }
 nav {
-    margin: 30px;
-    justify-content: space-evenly;
+    /*justify-content: space-evenly;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-evenly;*/
     
-    background-color: rgb(0, 0, 0);
     height: 60px;
     font-size: 24px;
     font-family: monospace;
@@ -91,7 +89,7 @@ h3 {
     width: 60%;
     min-height: 520px;
     color: rgb(235, 255, 20);
-    background-color: blueviolet;
+    background-image: url(".vscode/images/BlueBG.png");
     margin: 2% auto;
     padding: 30px 20px;
     display: flex;
@@ -123,12 +121,17 @@ img {
 
 }
 footer {
-    color: rgb(255, 255, 255);
+    background-image: url(".vscode/images/YellowBG.png");
     font-family: monospace;
     text-align: center;
     margin-top: auto;
     padding: 10px;
 }
+
+#footertext {
+  color: black;
+}
+
 .search-container {
     display: flex;
     justify-content: center;
@@ -404,4 +407,35 @@ footer {
 .space_content {
     height: 300px;
     width: 100%;
+}
+
+/* nav */
+
+.menu {
+  background-image: url(".vscode/images/MagentaBG.png");
+  width: auto;
+  max-height: 60px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.navbar {
+  width: 75%;
+  max-height: 60;
+  justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 25%;
+  max-height: 60;
+  background-color: rgb(15, 15, 15);
+  justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  max-height: 60px;
 }
