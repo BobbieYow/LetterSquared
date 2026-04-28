@@ -21,17 +21,38 @@
   </nav>
   <body>
     <div class="heroimage review-page">
+      <img src="movieimage.jpg" alt="movie images">
+    </div>
       <div class="review_1_quote">
         <div class="poster-box">
-          <img id="moviePoster" src="" alt="Movie Poster" style="max-width: 100%; height: auto;">
+          <img src="how_totrainyour_dragon.jpeg" alt="Movie Poster" style="max-width: 60%; height: auto;">
         </div>
         <div class="text-review-box">
-          <h1 id="movieTitle">movie name</h1>
-          <p id="movieReview">movie review</p>
-          <h3 id="movieReviewer">person who reviewed</h3>
+          <h1 id="movieTitle">How to Train Your Dragon</h1>
+          <p id="movieReview">This movie remains one of Dreamwork’s most stellar films. From the voice acting, to animation, and the themes of ignorance, understanding, and trust - all of these aspects soar to amazing heights in How to Train Your Dragon. </p>
+          <h3 id="movieReviewer">Dawson Chiu</h3>
+        </div>
+        
+        </div>
+        <div class="comment-section">
+          <h3>Leave a Comment</h3>
+          <textarea id="commentText" placeholder="Share your thoughts on this review..."></textarea>
+          <button onclick="submitComment()">Submit Comment</button>
+          <div id="commentsList"></div>
         </div>
       </div>
-    </div>
+
+
+      <div class="review_1_quote">
+        <div class="poster-box">
+          <img src="projectHailMaryPoster.jpeg" alt="project hail mary poster" style="max-width: 100%; height: auto;">
+        </div>
+        <div class="text-review-box">
+          <h1 id="movieTitle">Project Hail Mary</h1>
+          <p id="movieReview">-	Fantastic movie 10 out of 10 would watch again, also I have heard the movie did a great job of remaining true to the book. I think this is something that is going to make people really excited about space and that’s a beautiful thing! I got to see it in IMAX and the visuals were stunning and I don’t think I’ll ever get over it.  </p>
+          <h3 id="movieReviewer">Katelynn Shelton</h3>
+        </div>
+      </div>
 
     <div class="comment-section">
       <h3>Leave a Comment</h3>
@@ -39,6 +60,23 @@
       <button onclick="submitComment()">Submit Comment</button>
       <div id="commentsList"></div>
     </div>
+    <div class="review_1_quote">
+      <div class="poster-box">
+        <img id="moviePoster" src="bringherback.jpg" alt="Movie Poster" style="max-width: 60%; height: auto;">
+      </div>
+      <div class="text-review-box">
+        <h1 id="movieTitle">Bring Her Back</h1>
+        <p id="movieReview">-	The SADDEST horror film of all time possibly, oh my god.</p>
+        <h3 id="movieReviewer">Katelynn's friend Ellie</h3>
+      </div>
+    </div>
+
+  <div class="comment-section">
+    <h3>Leave a Comment</h3>
+    <textarea id="commentText" placeholder="Share your thoughts on this review..."></textarea>
+    <button onclick="submitComment()">Submit Comment</button>
+    <div id="commentsList"></div>
+  </div>
 
     <script>
       function displayReview() {
