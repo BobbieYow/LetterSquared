@@ -13,9 +13,9 @@ const reviewers = [
     reviewer: "Dawson Chiu"
   },
   {
-    movie: "Movie Name",
-    review: "MOVIE REVIEW GOES HERE. This is a placeholder review. Please replace it with your actual review of the movie.",
-    reviewer: "Movie Reviewer"
+    movie: "Mickey 17",
+    review: "Mickey 17 is a strange, convoluted, yet intriguing and entertaining film that keeps you so confused and concerned that you can’t stop watching. You get romance, political commentary, crazy alien stuff, existential horror, and Mark Ruffalo being completely insane. The satirical nature of Mickey 17 keeps you giggling but worried that maybe the government will take inspiration and colonize space and make us pay our space rent by turning into expendable space explorers. Anyways, it's a great film with a beautiful aesthetic and you get two Robert Pattinsons for the price of one! And no worries, you don’t have to watch the first sixteen movies to get this one. :3",
+    reviewer: "Velvet C."
   },
   {
     movie: "Movie Name",
