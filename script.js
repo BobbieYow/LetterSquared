@@ -8,9 +8,9 @@ const reviewers = [
     reviewer: "Bobbie Y."
   },
   {
-    movie: "Movie Name",
-    review: "MOVIE REVIEW GOES HERE. This is a placeholder review. Please replace it with your actual review of the movie.",
-    reviewer: "Movie Reviewer"
+    movie: "How to Train Your Dragon",
+    review: "This movie remains one of Dreamwork’s most stellar films. From the voice acting, to animation, and the themes of ignorance, understanding, and trust - all of these aspects soar to amazing heights in How to Train Your Dragon.",
+    reviewer: "Dawson Chiu"
   },
   {
     movie: "Movie Name",
