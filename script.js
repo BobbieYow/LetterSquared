@@ -27,6 +27,17 @@ const reviewers = [
     review: "MOVIE REVIEW GOES HERE. This is a placeholder review. Please replace it with your actual review of the movie.",
     reviewer: "Movie Reviewer"
   },
+  {
+    movie: "Project Hail Mary",
+    review: "- Fantastic movie 10 out of 10 would watch again, also I have heard the movie did a great job of remaining true to the book. I think this is something that is going to make people really excited about space and that’s a beautiful thing! I got to see it in IMAX and the visuals were stunning and I don’t think I’ll ever get over it.",
+    reviewer: "Katelynn Shelton"
+  },
+  {
+    movie: "Bring Her Back",
+    review: "- The SADDEST horror film of all time possibly, oh my god.",
+    reviewer: "Katelynn's friend Ellie"
+  },
+
   // Add more reviews as needed :) -B.Y.
 ];
 
